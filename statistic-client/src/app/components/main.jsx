@@ -1,29 +1,31 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
 
-let React = require('react');
-let mui = require('material-ui');
-let RaisedButton = mui.RaisedButton;
-let Dialog = mui.Dialog
-let ThemeManager = new mui.Styles.ThemeManager();
-let Colors = mui.Styles.Colors;
+import React from 'react';
+import mui from 'material-ui';
 
-let Main = React.createClass({
+class Main{
+  constructor() {
+    this.RaisedButton = mui.RaisedButton;
+    this.Dialog = mui.Dialog
+    this.ThemeManager = new mui.Styles.ThemeManager();
+    this.Colors = mui.Styles.Colors;
+  }
 
-  childContextTypes: {
+  childContextTypes() {
     muiTheme: React.PropTypes.object
-  },
+  };
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: this.ThemeManager.getCurrentTheme()
     };
-  },
+  };
 
   componentWillMount() {
-    ThemeManager.setPalette({
-      accent1Color: Colors.deepOrange500
+    this.ThemeManager.setPalette({
+      accent1Color: this.Colors.deepOrange500
     });
-  },
+  };
 
   render() {
 
@@ -52,12 +54,12 @@ let Main = React.createClass({
 
         </div>
     );
-  },
+  }
 
   _handleTouchTap() {
     this.refs.superSecretPasswordDialog.show();
   }
 
-});
+};
 
-module.exports = Main;
+export default Main;
