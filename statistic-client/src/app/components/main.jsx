@@ -1,65 +1,56 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
 
-import React from 'react';
-import mui from 'material-ui';
+var React = require('react');
+var mui = require('material-ui');
+var RaisedButton = mui.RaisedButton;
+var AppBar = mui.AppBar
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = mui.Styles.Colors;
 
-class Main{
-  constructor() {
-    this.RaisedButton = mui.RaisedButton;
-    this.Dialog = mui.Dialog
-    this.ThemeManager = new mui.Styles.ThemeManager();
-    this.Colors = mui.Styles.Colors;
-  }
+var socket = require('./socket/socket.jsx');
 
-  childContextTypes() {
+var Main = React.createClass({
+
+  childContextTypes: {
     muiTheme: React.PropTypes.object
-  };
+  },
 
-  getChildContext() {
+  getChildContext: function() {
     return {
-      muiTheme: this.ThemeManager.getCurrentTheme()
+      muiTheme: ThemeManager.getCurrentTheme()
     };
-  };
+  },
 
-  componentWillMount() {
-    this.ThemeManager.setPalette({
-      accent1Color: this.Colors.deepOrange500
+  componentWillMount: function() {
+    ThemeManager.setPalette({
+      accent1Color: Colors.deepOrange500
     });
-  };
+  },
 
-  render() {
+  render: function() {
 
-    let containerStyle = {
+    var containerStyle = {
       textAlign: 'center',
-      paddingTop: '200px'
     };
-
-    let standardActions = [
-      { text: 'Okay' }
-    ];
 
     return (
-        <div style={containerStyle}>
-          <Dialog
-              title="Super Secret Password"
-              actions={standardActions}
-              ref="superSecretPasswordDialog">
-            1-2-3-4-5
-          </Dialog>
 
-          <h1>material-ui</h1>
-          <h2>example project</h2>
+      <div style={containerStyle}>
+        <socket/>
+        <AppBar title='Statistic' iconClassNameRight="muidocs-icon-navigation-expand-more" onLeftIconButtonTouchTap={this.leftClick}/>
+        <h1>material-ui</h1>
+        <h2>example project</h2>
 
-          <RaisedButton label="Super Secret Password" primary={true} onTouchTap={this._handleTouchTap} />
+        <RaisedButton label="Super Secret Password" primary={true} onTouchTap={this._handleTouchTap} />
 
-        </div>
+      </div>
     );
+  },
+
+  _handleTouchTap: function() {
+    alert('1-2-3-4-5');
   }
 
-  _handleTouchTap() {
-    this.refs.superSecretPasswordDialog.show();
-  }
+});
 
-};
-
-export default Main;
+module.exports = Main;
