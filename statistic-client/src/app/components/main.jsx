@@ -1,33 +1,29 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
 
-var React = require('react');
-var mui = require('material-ui');
-var RaisedButton = mui.RaisedButton;
-var AppBar = mui.AppBar
-var ThemeManager = new mui.Styles.ThemeManager();
-var Colors = mui.Styles.Colors;
+let React = require('react');
+let mui = require('material-ui');
+let RaisedButton = mui.RaisedButton;
+let AppBar = mui.AppBar;
+let ThemeManager = new mui.Styles.ThemeManager();
+let Colors = mui.Styles.Colors;
 
-var socket = require('./socket/socket.jsx');
+let Switcher = require('./socket/switcher.jsx');
 
-var Main = React.createClass({
+class Main {
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext: function() {
+  getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
-  },
+  }
 
-  componentWillMount: function() {
+  componentWillMount() {
     ThemeManager.setPalette({
       accent1Color: Colors.deepOrange500
     });
-  },
+  }
 
-  render: function() {
+  render() {
 
     var containerStyle = {
       textAlign: 'center',
@@ -36,7 +32,7 @@ var Main = React.createClass({
     return (
 
       <div style={containerStyle}>
-        <socket/>
+        <Switcher/>
         <AppBar title='Statistic' iconClassNameRight="muidocs-icon-navigation-expand-more" onLeftIconButtonTouchTap={this.leftClick}/>
         <h1>material-ui</h1>
         <h2>example project</h2>
@@ -45,12 +41,17 @@ var Main = React.createClass({
 
       </div>
     );
-  },
+  }
 
-  _handleTouchTap: function() {
+  _handleTouchTap() {
     alert('1-2-3-4-5');
   }
 
-});
+}
+
+Main.childContextTypes = {
+  muiTheme: React.PropTypes.object
+}
+
 
 module.exports = Main;
