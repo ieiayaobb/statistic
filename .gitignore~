@@ -61,6 +61,3 @@ target/
 
 node_modules/
 
-.idea/
-
-statistic.iml
