@@ -7,7 +7,7 @@ let AppBar = mui.AppBar;
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 
-let Switcher = require('./socket/switcher.jsx');
+let Switcher = require('./socket/switcher');
 
 class Main {
 
