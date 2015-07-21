@@ -59,8 +59,12 @@ docs/_build/
 # PyBuilder
 target/
 
+# node
 node_modules/
 
+# idea
 .idea/
-
 statistic.iml
+
+# bower
+bower_components/

@@ -11,6 +11,11 @@ Main Technology & Usage
 + babelify
 + socketio
 + material-ui
++ webpack
++ bower
++ bootstrap
++ jquery
++ echarts
 
 ### Back-end
 + Python
