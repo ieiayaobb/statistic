@@ -2,7 +2,7 @@ module.exports = {
 	entry: "./src/app/app.js",
 	module: {
 		loaders: [
-		{ test: /\.js$/, include: new RegExp('app'), loader: 'babel-loader?optional=es7.classProperties'}
+		{ test: /\.js$/, include: new RegExp('app|bower_components'), loader: 'babel-loader?optional=es7.classProperties'}
 		]
 	},
 	output:{
