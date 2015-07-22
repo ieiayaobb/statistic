@@ -8,6 +8,7 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 
 let Switcher = require('./socket/switcher');
+let ChartPanel = require('./charts/ChartPanel')
 
 class Main {
 
@@ -38,7 +39,7 @@ class Main {
         <h2>example project</h2>
 
         <RaisedButton label="Super Secret Password" primary={true} onTouchTap={this._handleTouchTap} />
-
+        <ChartPanel />
       </div>
     );
   }

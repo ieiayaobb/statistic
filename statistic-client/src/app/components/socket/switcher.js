@@ -14,7 +14,7 @@ class Switcher extends React.Component {
     }
 
     componentWillMount () {
-        console.log(1)
+
     }
 
     render (){
